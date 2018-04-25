@@ -2,18 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import {Provider} from 'react-redux';
-import {createStore, applyMiddleware, compose} from 'redux'
-import {Route} from 'react-router'
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux'
+import { Route } from 'react-router'
 
-import {routerMiddleware} from 'react-router-redux';
-import {reducer} from './reducers';
+import { routerMiddleware } from 'react-router-redux';
+import { reducer } from './reducers';
 import createHistory from 'history/createBrowserHistory';
-import Home from "./components/Home";
-import {Link, Router} from 'react-router-dom';
-import Sales from "./components/Sales";
-import Purchase from "./components/Purchase";
-import Balance from './components/Balance';
+import Home from "./components/Home.Component";
+import { Link, Router } from 'react-router-dom';
+import TransactionContainer from "./containers/Transaction.Container";
+import BalanceContainer from './containers/Balance.Container';
 import Immutable from 'immutable'
 
 const history = createHistory();
@@ -77,16 +76,16 @@ ReactDOM.render(<Provider store={store}>
 				<div className="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div className="navbar-nav">
 						<Link className="nav-item nav-link" activeclassname="active" to="/">Home</Link>
-						<Link className="nav-item nav-link" activeclassname="active" to="/sales">Sales</Link>
-						<Link className="nav-item nav-link" activeclassname="active" to="/purchase">Purchase</Link>
+						<Link to={{ pathname: '/sales', state: { type: 'sales' } }} className="nav-item nav-link" activeclassname="active" >Sales</Link>
+						<Link to={{ pathname: '/purchase', state: { type: 'purchases' } }} className="nav-item nav-link" activeclassname="active">Purchase</Link>
 						<Link className="nav-item nav-link" activeclassname="active" to="/balance">Balance</Link>
 					</div>
 				</div>
 			</nav>
 			<Route exact path="/" component={Home}/>
-			<Route path="/sales" component={Sales}/>
-			<Route path="/purchase" component={Purchase}/>
-			<Route path="/balance" component={Balance}>
+			<Route exact path="/sales" component={TransactionContainer}/>
+			<Route exact path="/purchase" component={TransactionContainer}/>
+			<Route exact path="/balance" component={BalanceContainer}>
 
 			</Route>
 		</div>
