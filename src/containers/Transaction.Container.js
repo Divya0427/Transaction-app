@@ -29,8 +29,8 @@ class TransactionContainer extends Component {
 		let { description, date, amount } = this.state;
 
 		if(description && date && amount) {
-		  const type = this.props.location.state.type;
-		  this.props.actions.addTransactionItem({ description, date, amount, type });
+		  const category = this.props.location.state.type;
+		  this.props.actions.addTransactionItem({ description, date, amount, category });
 		}
 		this.setState({
 		  description: '',

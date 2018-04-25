@@ -1,7 +1,7 @@
 import {routerReducer} from 'react-router-redux';
 import {combineReducers} from "redux";
-import salesReducer from './salesReducer';
-import purchasesReducer from './purchaseReducer';
+import salesReducer from './sales.reducer';
+import purchasesReducer from './purchases.reducer';
 
 export const reducer = combineReducers({
 	sales: salesReducer,

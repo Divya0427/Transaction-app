@@ -5,12 +5,16 @@ const initialPurchases = initialState.purchasesHistory;
 export default function purchasesReducer(state = initialPurchases, action) {
   switch(action.type) {    
     case ADD_PURCHASE_ITEM:
-      const { description, amount, date } = action.newTransactionItem;
+    console.log(state);//purchases array
+    console.log(action);
+      const { description, amount, date, category } = action.newTransactionItem;
+      console.log(action.newTransactionItem);
       return [
         {
           description,
           amount,
-          date
+          date,
+          category
         },
         ...state,
       ];

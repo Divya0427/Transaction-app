@@ -5,12 +5,13 @@ const initialSales = initialState.salesHistory;
 export default function salesReducer(state = initialSales, action) {
   switch (action.type) {    
     case ADD_SALE_ITEM:
-      const { description, amount, date } = action.newTransactionItem;
+      const { description, amount, date, category } = action.newTransactionItem;
       return [
         {
           description,
           amount,
-          date
+          date,
+          category
         },
         ...state,
       ];
